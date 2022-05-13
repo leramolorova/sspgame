@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+<body style="background-image: url(bg.webp); background-size: 100%;">
+	<p class="text-center fw-bold fs-4" style="margin-top: 45px;">Ходит <span class="queue">1</span> игрок</p>
+	<div class="col-6 mx-auto bg-danger d-flex" style="height: 40vh; margin-top: 10vh;">
+		<div class="col-6 bg-warning">
+			<div class="col-8 mx-auto mt-4 p1" style="height: 33vh; background: black;">
+				
+			</div>
+		</div>
+		<div class="col-6 bg-info">
+			<div class="col-8 mx-auto mt-4 p2" style="height: 33vh; background: black;">
+				
+			</div>
+		</div>
+		
+	</div>
+	<p class="text-center fw-bold fs-5">ножницы - S(J), камень - D(K), бумага - A(L)</p>
+
+
+
+
+<script type="text/javascript">
+
+	let p1 = document.querySelector('.p1');
+	let p2 = document.querySelector('.p2');
+	let queue = document.querySelector('.queue')
+
+	let choosePlayer = 1;
+
+
+	let player1Status = null;
+	let player2Status = null;
+
+
+	let recolor = function(){
+		if (player1Status == "ножницы") {
+			p1.style.backgroundImage = "url(scissors.webp)";
+			p1.style.backgroundSize = "100% 100%";
+		} else if (player1Status == "камень") {
+			p1.style.backgroundImage = "url(stone.webp)";
+			p1.style.backgroundSize = "100% 100%";
+		} else if (player1Status == "бумага") {
+			p1.style.backgroundImage = "url(paper.jpg)";
+			p1.style.backgroundSize = "100% 100%";
+		} 
+
+
+
+		if (player2Status == "ножницы") {
+			p2.style.backgroundImage = "url(scissors.webp)";
+			p2.style.backgroundSize = "100% 100%";
+		} else if (player2Status == "камень") {
+			p2.style.backgroundImage = "url(stone.webp)";
+			p2.style.backgroundSize = "100% 100%";
+		} else if (player2Status == "бумага") {
+			p2.style.backgroundImage = "url(paper.jpg)";
+			p2.style.backgroundSize = "100% 100%";
+		}
+	}
+
+
+	let checkresults = function(){
+			if (player1Status == player2Status) {
+				alert("ничья")
+			} else if (player1Status == "ножницы" && player2Status == "бумага") {
+				alert("выиграл первый игрок")
+			} else if (player1Status == "бумага" && player2Status == "камень") {
+				alert("выиграл первый игрок")
+			} else if (player1Status == "камень" && player2Status == "ножницы") {
+				alert("выиграл первый игрок")
+			} else{
+				alert("выиграл второй игрок")
+			}
+		}
+
+	document.addEventListener("keydown", function (event) {
+
+		if(choosePlayer==1){
+
+			if(event.key=="s"){
+		  	console.log("ты нажал на букву s")
+		  	choosePlayer = 2;
+		  	player1Status = "ножницы";
+		  } else if(event.key=="d"){
+		  	console.log("ты нажал на букву d")
+		  	choosePlayer = 2;
+		  	player1Status = "камень"
+		  } else if(event.key=="a"){
+		  	console.log("ты нажал на букву a")
+		  	choosePlayer = 2;
+		  	player1Status = "бумага"
+		  } else{
+		  	alert("не та кнопка")
+
+		  }
+		}
+		 else if (choosePlayer==2){
+			queue.innerHTML = "2";
+			if(event.key=="j"){
+		  	console.log("ты нажал на букву j")
+		  	choosePlayer = 0;
+		  	player2Status="ножницы"
+		  } else if(event.key=="k"){
+		  	console.log("ты нажал на букву k")
+		  	choosePlayer = 0;
+		  	player2Status = "камень"
+		  } else if(event.key=="l"){
+		  	console.log("ты нажал на букву l")
+		  	choosePlayer = 0;
+		  	player2Status = "бумага"
+		  } else{
+		  	alert("не та кнопка")
+		  }
+		}
+
+
+		if(choosePlayer == 0){
+			console.log("checking")
+			setTimeout(recolor, 500);
+			setTimeout(checkresults, 1000);
+		}
+	})
+
+
+
+
+	
+
+		
+		
+	/*
+	функция перекрасить{
+		если статус 1 = ножницы{
+			перекрасить на синий
+		} ельс иф..
+
+
+		если статус 2 = ...
+	}
+
+	функция проверка результатов{
+		иф статус один == статус два {
+			алерт ничья
+		} ельс иф(статус1 == ножницы ии статус2 == камень){
+			победил игрок два
+			
+		} ельс иф и тд...
+	}
+
+
+	*/
+
+
+</script>
+
+</body>
+</html>
